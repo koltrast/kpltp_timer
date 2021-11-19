@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>kpltp-timer</title>
+  <style>
+    body,
+    html {
+      background: #2b2b2b;
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    @font-face {
+    font-family: aileron;
+    src:url("Aileron-Regular.otf");
+    }
+
+    .external {
+      display: table;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .middle {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .internal {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+    .box {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .counter {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      height: 60px;
+      border-radius: 10px;
+      background-color: #2b2b2b;
+      opacity: 92%;
+    }
+
+    .p1 {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      font-family: aileron, Helvetica, Arial, sans-serif;
+      font-size: 48px;
+      color: #f7e34c;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="external">
+    <div class="middle">
+      <div class="internal">
+        <div class="counter">
+          <p class="p1" id="timer"></p>
+        </div>
+        <div class="box">
+          <img src="programme.jpg" alt="programme">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <script>
+    var countDownDate = new Date("Nov 20, 2021 01:00:00").getTime();
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("timer").innerHTML = hours + "h "
+        + minutes + "m " + seconds + "s ";
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "C’EST FINI !";
+      }
+    }, 1000);
+  </script>
+</body>
+
+</html>
